@@ -29,9 +29,7 @@ namespace DotNETGalaxyView
 
         private void buildingsDataGridView_DefaultValuesNeeded(object sender, System.Windows.Forms.DataGridViewRowEventArgs e)
         {
-            //e.Row.Cells["Name"].Value = "Factory";
-            //e.Row.Cells["Cost"].Value = 10;
-            //e.Row.Cells["Level"].Value = 1;
+
         }
     }
 }

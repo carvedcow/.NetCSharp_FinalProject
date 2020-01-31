@@ -115,7 +115,7 @@
             this.btn_Upgrade.Name = "btn_Upgrade";
             this.btn_Upgrade.Size = new System.Drawing.Size(111, 23);
             this.btn_Upgrade.TabIndex = 10;
-            this.btn_Upgrade.Text = "Upgrate Building";
+            this.btn_Upgrade.Text = "Upgrade Building";
             this.btn_Upgrade.UseVisualStyleBackColor = true;
             this.btn_Upgrade.Click += new System.EventHandler(this.btn_Upgrade_Click);
             // 
