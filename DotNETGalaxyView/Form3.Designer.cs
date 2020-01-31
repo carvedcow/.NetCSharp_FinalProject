@@ -34,7 +34,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
             this.tb_planetName = new System.Windows.Forms.TextBox();
             this.tb_planetResources = new System.Windows.Forms.TextBox();
-            this.btn_Delete = new System.Windows.Forms.Button();
             this.btn_Upgrade = new System.Windows.Forms.Button();
             this.buildingsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buildingsBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
@@ -98,16 +97,6 @@
             this.tb_planetResources.Name = "tb_planetResources";
             this.tb_planetResources.Size = new System.Drawing.Size(196, 20);
             this.tb_planetResources.TabIndex = 16;
-            // 
-            // btn_Delete
-            // 
-            this.btn_Delete.Location = new System.Drawing.Point(210, 229);
-            this.btn_Delete.Name = "btn_Delete";
-            this.btn_Delete.Size = new System.Drawing.Size(104, 23);
-            this.btn_Delete.TabIndex = 12;
-            this.btn_Delete.Text = "Demolish Building";
-            this.btn_Delete.UseVisualStyleBackColor = true;
-            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
             // btn_Upgrade
             // 
@@ -322,7 +311,6 @@
             this.Controls.Add(this.tb_planetName);
             this.Controls.Add(planetResourcesLabel);
             this.Controls.Add(this.tb_planetResources);
-            this.Controls.Add(this.btn_Delete);
             this.Controls.Add(this.btn_Upgrade);
             this.Name = "Form3";
             this.Text = "Form3";
@@ -340,7 +328,6 @@
 
         private System.Windows.Forms.TextBox tb_planetName;
         private System.Windows.Forms.TextBox tb_planetResources;
-        private System.Windows.Forms.Button btn_Delete;
         private System.Windows.Forms.Button btn_Upgrade;
         private System.Windows.Forms.BindingSource buildingsBindingSource;
         private System.Windows.Forms.BindingNavigator buildingsBindingNavigator;
