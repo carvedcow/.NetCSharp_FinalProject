@@ -17,6 +17,8 @@ namespace DotNETGalaxyView
         public int planetId { get; set; }
         public string planetName { get; set; }
         public int planetResource { get; set; }
+        public int factoryLevel { get; set; }
+        public int storageLevel { get; set; }
         BuildingContext _context;
 
         public Form3()
@@ -39,6 +41,7 @@ namespace DotNETGalaxyView
 
         }
 
+        // upgrade button clicked
         private void btn_Upgrade_Click(object sender, EventArgs e)
         {
             if (buildingsDataGridView.SelectedRows.Count != 0)
@@ -50,13 +53,18 @@ namespace DotNETGalaxyView
                 var result = _context.Buildings.SingleOrDefault(b => b.BuildingId == selectedBuildingId);
                 if (result != null)
                 {
-                    
+                    if (planetResource >= result.BuildingCost)
+                    {
+                        planetResource -= result.BuildingCost;
+                        tb_planetResources.Text = planetResource.ToString();
+                        result.BuildingCost *= 2;
+                        result.BuildingLevel += 1;
 
-                        // assign planetName and planetResource
-                        //planetName = (string)row.Cells[1].Value;
-                        //planetResource = (int)row.Cells[2].Value;
-
-
+                        if (result.BuildingName.Equals("Factory"))
+                            factoryLevel = result.BuildingLevel;
+                        else
+                            storageLevel = result.BuildingLevel;
+                    }
                     _context.SaveChanges();
                     buildingsDataGridView.Refresh();
                 }

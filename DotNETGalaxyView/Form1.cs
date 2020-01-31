@@ -15,7 +15,8 @@ namespace DotNETGalaxyView
     {
         // Properties
         public string incomingForm2Name;
-        public int incomingForm3Value = 1;
+        public int incomingForm3FactoryLevel = 1;
+        public int incomingForm3StorageLevel = 1;
         public int addedResource = 10;
         public int maxResource = 100;
         BuildingContext _context;
@@ -144,14 +145,16 @@ namespace DotNETGalaxyView
 
                         // show form3
                         frm3.ShowDialog();
-                        
+                        result.PlanetResources = frm3.planetResource;
+                        incomingForm3FactoryLevel = frm3.factoryLevel;
+                        incomingForm3StorageLevel = frm3.storageLevel;
+                        Show();
                     }
 
                     _context.SaveChanges();
                     planetDataGridView.Refresh();
                 }
             }
-            Show();
         }
 
         private void btn_AbandonPlanet_Click(object sender, EventArgs e)
@@ -177,6 +180,8 @@ namespace DotNETGalaxyView
         private void btn_CollectResource_Click(object sender, EventArgs e)
         {
             // collect resource
+
+
             if (planetDataGridView.SelectedRows.Count != 0)
             {
                 DataGridViewRow row = planetDataGridView.SelectedRows[0];
@@ -186,12 +191,14 @@ namespace DotNETGalaxyView
                 var result = _context.Planets.SingleOrDefault(p => p.PlanetId == selectedRow);
                 if (result != null)
                 {
-                    result.PlanetResources += addedResource * incomingForm3Value;
-                    _context.SaveChanges();
-                    planetDataGridView.Refresh();
+                    if (result.PlanetResources < maxResource * incomingForm3StorageLevel)
+                    {
+                        result.PlanetResources += addedResource * incomingForm3FactoryLevel;
+                        _context.SaveChanges();
+                        planetDataGridView.Refresh();
+                    }
                 }
             }
-
         }
     }
 }
