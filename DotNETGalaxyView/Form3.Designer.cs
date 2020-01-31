@@ -115,7 +115,11 @@
             this.btn_Upgrade.Name = "btn_Upgrade";
             this.btn_Upgrade.Size = new System.Drawing.Size(111, 23);
             this.btn_Upgrade.TabIndex = 10;
+<<<<<<< HEAD
             this.btn_Upgrade.Text = "Upgrade Building";
+=======
+            this.btn_Upgrade.Text = "Upgrate Building";
+>>>>>>> 6ebbc74e0f29dc72a05e0c3f29f7af55ccdd1186
             this.btn_Upgrade.UseVisualStyleBackColor = true;
             this.btn_Upgrade.Click += new System.EventHandler(this.btn_Upgrade_Click);
             // 
@@ -272,7 +276,10 @@
             this.dataGridViewTextBoxColumn1.DataPropertyName = "BuildingId";
             this.dataGridViewTextBoxColumn1.HeaderText = "BuildingId";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+<<<<<<< HEAD
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
+=======
+>>>>>>> 6ebbc74e0f29dc72a05e0c3f29f7af55ccdd1186
             this.dataGridViewTextBoxColumn1.Visible = false;
             // 
             // dataGridViewTextBoxColumn2
@@ -280,28 +287,40 @@
             this.dataGridViewTextBoxColumn2.DataPropertyName = "BuildingName";
             this.dataGridViewTextBoxColumn2.HeaderText = "Name";
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+<<<<<<< HEAD
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
+=======
+>>>>>>> 6ebbc74e0f29dc72a05e0c3f29f7af55ccdd1186
             // 
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "BuildingCost";
             this.dataGridViewTextBoxColumn3.HeaderText = "Cost";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+<<<<<<< HEAD
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
+=======
+>>>>>>> 6ebbc74e0f29dc72a05e0c3f29f7af55ccdd1186
             // 
             // dataGridViewTextBoxColumn4
             // 
             this.dataGridViewTextBoxColumn4.DataPropertyName = "BuildingLevel";
             this.dataGridViewTextBoxColumn4.HeaderText = "Level";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+<<<<<<< HEAD
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
+=======
+>>>>>>> 6ebbc74e0f29dc72a05e0c3f29f7af55ccdd1186
             // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "PlanetId";
             this.dataGridViewTextBoxColumn5.HeaderText = "PlanetId";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+<<<<<<< HEAD
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
+=======
+>>>>>>> 6ebbc74e0f29dc72a05e0c3f29f7af55ccdd1186
             this.dataGridViewTextBoxColumn5.Visible = false;
             // 
             // dataGridViewTextBoxColumn6
@@ -309,7 +328,10 @@
             this.dataGridViewTextBoxColumn6.DataPropertyName = "Planet";
             this.dataGridViewTextBoxColumn6.HeaderText = "Planet";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+<<<<<<< HEAD
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
+=======
+>>>>>>> 6ebbc74e0f29dc72a05e0c3f29f7af55ccdd1186
             this.dataGridViewTextBoxColumn6.Visible = false;
             // 
             // Form3
