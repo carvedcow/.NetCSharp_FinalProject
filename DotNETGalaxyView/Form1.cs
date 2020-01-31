@@ -15,7 +15,9 @@ namespace DotNETGalaxyView
     {
         // Properties
         public string incomingForm2Name;
+        public int incomingForm3Value = 1;
         public int addedResource = 10;
+        public int maxResource = 100;
         BuildingContext _context;
 
         public Form1()
@@ -42,6 +44,7 @@ namespace DotNETGalaxyView
             this.planetBindingSource.DataSource = _context.Planets.Local.ToBindingList();
         }
 
+        // not used
         private void planetBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
@@ -78,6 +81,7 @@ namespace DotNETGalaxyView
 
         }
 
+        // create new planet
         private void btn_ColPlanet_Click(object sender, EventArgs e)
         {
             using (Form2 frm2 = new Form2())
@@ -91,21 +95,61 @@ namespace DotNETGalaxyView
 
             // save new planet to context
             Show();
-            var newPlanet = new Planet()
+            if (!String.IsNullOrEmpty(incomingForm2Name))
             {
-                PlanetName = incomingForm2Name
-            };
-            _context.Planets.Add(newPlanet);
-            _context.SaveChanges();
-            planetDataGridView.Refresh();
+                var newPlanet = new Planet()
+                {
+                    PlanetName = incomingForm2Name
+                };
+                var factory = new Building()
+                {
+                    BuildingName = "Factory",
+                    BuildingCost = 10,
+                    BuildingLevel = 1,
+                    BuildingId = newPlanet.PlanetId
+                };
+                var storage = new Building()
+                {
+                    BuildingName = "Storage",
+                    BuildingCost = 10,
+                    BuildingLevel = 1,
+                    BuildingId = newPlanet.PlanetId
+                };
+                _context.Planets.Add(newPlanet);
+                _context.Buildings.Add(factory);
+                _context.Buildings.Add(storage);
+                _context.SaveChanges();
+                planetDataGridView.Refresh();
+            }
         }
 
+        // view building
         private void btn_ViewBuildings_Click(object sender, EventArgs e)
         {
-            using (Form3 frm3 = new Form3())
+            if (planetDataGridView.SelectedRows.Count != 0)
             {
-                // show form3
-                frm3.ShowDialog();
+                DataGridViewRow row = planetDataGridView.SelectedRows[0];
+
+                int selectedPlanetObjectId = (int)row.Cells[0].Value;
+
+                var result = _context.Planets.SingleOrDefault(p => p.PlanetId == selectedPlanetObjectId);
+                if (result != null)
+                {
+                    using (Form3 frm3 = new Form3())
+                    {
+                        // assign planetName and planetResource
+                        frm3.planetId = (int)row.Cells[0].Value;
+                        frm3.planetName = (string)row.Cells[1].Value;
+                        frm3.planetResource = (int)row.Cells[2].Value;
+
+                        // show form3
+                        frm3.ShowDialog();
+                        
+                    }
+
+                    _context.SaveChanges();
+                    planetDataGridView.Refresh();
+                }
             }
             Show();
         }
@@ -142,7 +186,7 @@ namespace DotNETGalaxyView
                 var result = _context.Planets.SingleOrDefault(p => p.PlanetId == selectedRow);
                 if (result != null)
                 {
-                    result.PlanetResources += addedResource;
+                    result.PlanetResources += addedResource * incomingForm3Value;
                     _context.SaveChanges();
                     planetDataGridView.Refresh();
                 }

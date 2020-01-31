@@ -32,8 +32,8 @@
             System.Windows.Forms.Label planetNameLabel;
             System.Windows.Forms.Label planetResourcesLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
-            this.planetNameTextBox = new System.Windows.Forms.TextBox();
-            this.planetResourcesTextBox = new System.Windows.Forms.TextBox();
+            this.tb_planetName = new System.Windows.Forms.TextBox();
+            this.tb_planetResources = new System.Windows.Forms.TextBox();
             this.btn_Delete = new System.Windows.Forms.Button();
             this.btn_Upgrade = new System.Windows.Forms.Button();
             this.buildingsBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -83,21 +83,21 @@
             planetResourcesLabel.TabIndex = 15;
             planetResourcesLabel.Text = "Current Resources:";
             // 
-            // planetNameTextBox
+            // tb_planetName
             // 
-            this.planetNameTextBox.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.planetNameTextBox.Location = new System.Drawing.Point(167, 30);
-            this.planetNameTextBox.Name = "planetNameTextBox";
-            this.planetNameTextBox.Size = new System.Drawing.Size(196, 20);
-            this.planetNameTextBox.TabIndex = 14;
+            this.tb_planetName.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.tb_planetName.Location = new System.Drawing.Point(167, 30);
+            this.tb_planetName.Name = "tb_planetName";
+            this.tb_planetName.Size = new System.Drawing.Size(196, 20);
+            this.tb_planetName.TabIndex = 14;
             // 
-            // planetResourcesTextBox
+            // tb_planetResources
             // 
-            this.planetResourcesTextBox.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.planetResourcesTextBox.Location = new System.Drawing.Point(167, 66);
-            this.planetResourcesTextBox.Name = "planetResourcesTextBox";
-            this.planetResourcesTextBox.Size = new System.Drawing.Size(196, 20);
-            this.planetResourcesTextBox.TabIndex = 16;
+            this.tb_planetResources.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.tb_planetResources.Location = new System.Drawing.Point(167, 66);
+            this.tb_planetResources.Name = "tb_planetResources";
+            this.tb_planetResources.Size = new System.Drawing.Size(196, 20);
+            this.tb_planetResources.TabIndex = 16;
             // 
             // btn_Delete
             // 
@@ -260,12 +260,11 @@
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6});
             this.buildingsDataGridView.DataSource = this.buildingsBindingSource;
-            this.buildingsDataGridView.Location = new System.Drawing.Point(61, 105);
+            this.buildingsDataGridView.Location = new System.Drawing.Point(61, 106);
             this.buildingsDataGridView.Name = "buildingsDataGridView";
             this.buildingsDataGridView.ReadOnly = true;
-            this.buildingsDataGridView.Size = new System.Drawing.Size(343, 94);
+            this.buildingsDataGridView.Size = new System.Drawing.Size(347, 91);
             this.buildingsDataGridView.TabIndex = 17;
-            this.buildingsDataGridView.DefaultValuesNeeded += new System.Windows.Forms.DataGridViewRowEventHandler(this.buildingsDataGridView_DefaultValuesNeeded);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -320,9 +319,9 @@
             this.Controls.Add(this.buildingsDataGridView);
             this.Controls.Add(this.buildingsBindingNavigator);
             this.Controls.Add(planetNameLabel);
-            this.Controls.Add(this.planetNameTextBox);
+            this.Controls.Add(this.tb_planetName);
             this.Controls.Add(planetResourcesLabel);
-            this.Controls.Add(this.planetResourcesTextBox);
+            this.Controls.Add(this.tb_planetResources);
             this.Controls.Add(this.btn_Delete);
             this.Controls.Add(this.btn_Upgrade);
             this.Name = "Form3";
@@ -339,8 +338,8 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox planetNameTextBox;
-        private System.Windows.Forms.TextBox planetResourcesTextBox;
+        private System.Windows.Forms.TextBox tb_planetName;
+        private System.Windows.Forms.TextBox tb_planetResources;
         private System.Windows.Forms.Button btn_Delete;
         private System.Windows.Forms.Button btn_Upgrade;
         private System.Windows.Forms.BindingSource buildingsBindingSource;

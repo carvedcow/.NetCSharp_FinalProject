@@ -49,10 +49,10 @@
             this.btn_AbandonPlanet = new System.Windows.Forms.Button();
             this.btn_CollectResource = new System.Windows.Forms.Button();
             this.buildingsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.planetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.planetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.planetBindingNavigator)).BeginInit();
             this.planetBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.planetDataGridView)).BeginInit();
@@ -207,7 +207,7 @@
             this.planetDataGridView.Location = new System.Drawing.Point(207, 45);
             this.planetDataGridView.Name = "planetDataGridView";
             this.planetDataGridView.ReadOnly = true;
-            this.planetDataGridView.Size = new System.Drawing.Size(242, 229);
+            this.planetDataGridView.Size = new System.Drawing.Size(247, 229);
             this.planetDataGridView.TabIndex = 3;
             // 
             // btn_ViewBuildings
@@ -245,10 +245,6 @@
             this.buildingsBindingSource.DataMember = "Buildings";
             this.buildingsBindingSource.DataSource = this.planetBindingSource;
             // 
-            // planetBindingSource
-            // 
-            this.planetBindingSource.DataSource = typeof(DotNETGalaxyView.Planet);
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "PlanetId";
@@ -270,6 +266,10 @@
             this.dataGridViewTextBoxColumn3.HeaderText = "Resources";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // planetBindingSource
+            // 
+            this.planetBindingSource.DataSource = typeof(DotNETGalaxyView.Planet);
             // 
             // Form1
             // 
