@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace DotNETGalaxyView
 {
+
     public partial class Form1 : Form
     {
         // Properties
@@ -20,8 +21,6 @@ namespace DotNETGalaxyView
         public int addedResource = 10;
         public int maxResource = 100;
         BuildingContext _context;
-        BuildingContext _buildingContext;
-
         public Form1()
         {
             InitializeComponent();
@@ -43,11 +42,10 @@ namespace DotNETGalaxyView
             // ObservableCollection<TEntity> returned by
             // the DbSet.Local property to get the BindingList<T>
             // in order to facilitate two-way binding in WinForms.
-            this.planetBindingSource.DataSource = _context.Planets.Local.ToBindingList();
-
-            _buildingContext = new BuildingContext();
-            _buildingContext.Buildings.Load();
+            planetBindingSource.DataSource = _context.Planets.Local.ToBindingList();
+            //buildingsBindingSource.DataSource = _context.Buildings.Local.ToBindingList();
         }
+
 
         // not used
         private void planetBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -83,7 +81,6 @@ namespace DotNETGalaxyView
             base.OnClosing(e);
             // dispose context and close connection
             _context.Dispose();
-            _buildingContext.Dispose();
 
         }
 
@@ -155,11 +152,10 @@ namespace DotNETGalaxyView
                         //factoryLevel = frm3.factoryLevel;
                         //storageLevel = frm3.storageLevel;
                         //_buildingContext.SaveChanges();
-                        
+
                     }
                     Show();
                     _context.SaveChanges();
-                    _buildingContext.Buildings.Load();
                     planetDataGridView.Refresh();
                 }
             }
@@ -187,6 +183,8 @@ namespace DotNETGalaxyView
 
         private void btn_CollectResource_Click(object sender, EventArgs e)
         {
+            
+
             if (planetDataGridView.SelectedRows.Count != 0)
             {
                 DataGridViewRow row = planetDataGridView.SelectedRows[0];
@@ -195,10 +193,13 @@ namespace DotNETGalaxyView
 
                 var result = _context.Planets.SingleOrDefault(p => p.PlanetId == selectedPlanetObjectId);
                 if (result != null)
-                { 
-                    
-                    var selectedFactory = _buildingContext.Buildings.SingleOrDefault(b => b.PlanetId == result.PlanetId && b.BuildingName.Equals("Factory"));
-                    var selectedStorage = _buildingContext.Buildings.SingleOrDefault(b => b.PlanetId == result.PlanetId && b.BuildingName.Equals("Storage"));
+                {
+                    // Reload the Entities insde the context
+                    _context.Entry(_context.Buildings.Where(b => b.PlanetId == result.PlanetId && b.BuildingName.Equals("Factory")).FirstOrDefault()).Reload();
+                    _context.Entry(_context.Buildings.Where(b => b.PlanetId == result.PlanetId && b.BuildingName.Equals("Storage")).FirstOrDefault()).Reload();
+                    // Assign the new values from the reloaded entities
+                    var selectedFactory = _context.Buildings.Where(b => b.PlanetId == result.PlanetId && b.BuildingName.Equals("Factory")).FirstOrDefault();
+                    var selectedStorage = _context.Buildings.Where(b => b.PlanetId == result.PlanetId && b.BuildingName.Equals("Storage")).FirstOrDefault();
                     factoryLevel = selectedFactory.BuildingLevel;
                     storageLevel = selectedStorage.BuildingLevel;
 
@@ -208,6 +209,7 @@ namespace DotNETGalaxyView
                         _context.SaveChanges();
                         planetDataGridView.Refresh();
                     }
+
                 }
             }
         }

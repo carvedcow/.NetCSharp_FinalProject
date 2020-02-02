@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.planetBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.planetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -45,19 +46,18 @@
             this.planetBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.btn_ColPlanet = new System.Windows.Forms.Button();
             this.planetDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_ViewBuildings = new System.Windows.Forms.Button();
             this.btn_AbandonPlanet = new System.Windows.Forms.Button();
             this.btn_CollectResource = new System.Windows.Forms.Button();
             this.buildingsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.planetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.planetBindingNavigator)).BeginInit();
             this.planetBindingNavigator.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.planetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.planetDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buildingsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.planetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // planetBindingNavigator
@@ -99,6 +99,10 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Add new";
+            // 
+            // planetBindingSource
+            // 
+            this.planetBindingSource.DataSource = typeof(DotNETGalaxyView.Planet);
             // 
             // bindingNavigatorCountItem
             // 
@@ -210,6 +214,28 @@
             this.planetDataGridView.Size = new System.Drawing.Size(247, 229);
             this.planetDataGridView.TabIndex = 3;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "PlanetId";
+            this.dataGridViewTextBoxColumn1.HeaderText = "PlanetId";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "PlanetName";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "PlanetResources";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Resources";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
             // btn_ViewBuildings
             // 
             this.btn_ViewBuildings.Location = new System.Drawing.Point(534, 45);
@@ -245,32 +271,6 @@
             this.buildingsBindingSource.DataMember = "Buildings";
             this.buildingsBindingSource.DataSource = this.planetBindingSource;
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "PlanetId";
-            this.dataGridViewTextBoxColumn1.HeaderText = "PlanetId";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "PlanetName";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "PlanetResources";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Resources";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // planetBindingSource
-            // 
-            this.planetBindingSource.DataSource = typeof(DotNETGalaxyView.Planet);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -287,9 +287,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.planetBindingNavigator)).EndInit();
             this.planetBindingNavigator.ResumeLayout(false);
             this.planetBindingNavigator.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.planetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.planetDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buildingsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.planetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
