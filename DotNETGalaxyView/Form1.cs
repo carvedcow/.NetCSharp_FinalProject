@@ -15,11 +15,12 @@ namespace DotNETGalaxyView
     {
         // Properties
         public string incomingForm2Name;
-        public int incomingForm3FactoryLevel = 1;
-        public int incomingForm3StorageLevel = 1;
+        public int factoryLevel = 1;
+        public int storageLevel = 1;
         public int addedResource = 10;
         public int maxResource = 100;
         BuildingContext _context;
+        BuildingContext _buildingContext;
 
         public Form1()
         {
@@ -43,6 +44,9 @@ namespace DotNETGalaxyView
             // the DbSet.Local property to get the BindingList<T>
             // in order to facilitate two-way binding in WinForms.
             this.planetBindingSource.DataSource = _context.Planets.Local.ToBindingList();
+
+            _buildingContext = new BuildingContext();
+            _buildingContext.Buildings.Load();
         }
 
         // not used
@@ -78,7 +82,8 @@ namespace DotNETGalaxyView
         {
             base.OnClosing(e);
             // dispose context and close connection
-            this._context.Dispose();
+            _context.Dispose();
+            _buildingContext.Dispose();
 
         }
 
@@ -145,13 +150,16 @@ namespace DotNETGalaxyView
 
                         // show form3
                         frm3.ShowDialog();
-                        result.PlanetResources = frm3.planetResource;
-                        incomingForm3FactoryLevel = frm3.factoryLevel;
-                        incomingForm3StorageLevel = frm3.storageLevel;
-                        Show();
-                    }
 
+                        result.PlanetResources = frm3.planetResource;
+                        //factoryLevel = frm3.factoryLevel;
+                        //storageLevel = frm3.storageLevel;
+                        //_buildingContext.SaveChanges();
+                        
+                    }
+                    Show();
                     _context.SaveChanges();
+                    _buildingContext.Buildings.Load();
                     planetDataGridView.Refresh();
                 }
             }
@@ -179,21 +187,24 @@ namespace DotNETGalaxyView
 
         private void btn_CollectResource_Click(object sender, EventArgs e)
         {
-            // collect resource
-
-
             if (planetDataGridView.SelectedRows.Count != 0)
             {
                 DataGridViewRow row = planetDataGridView.SelectedRows[0];
 
-                int selectedRow = (int)row.Cells[0].Value;
+                int selectedPlanetObjectId = (int)row.Cells[0].Value;
 
-                var result = _context.Planets.SingleOrDefault(p => p.PlanetId == selectedRow);
+                var result = _context.Planets.SingleOrDefault(p => p.PlanetId == selectedPlanetObjectId);
                 if (result != null)
-                {
-                    if (result.PlanetResources < maxResource * incomingForm3StorageLevel)
+                { 
+                    
+                    var selectedFactory = _buildingContext.Buildings.SingleOrDefault(b => b.PlanetId == result.PlanetId && b.BuildingName.Equals("Factory"));
+                    var selectedStorage = _buildingContext.Buildings.SingleOrDefault(b => b.PlanetId == result.PlanetId && b.BuildingName.Equals("Storage"));
+                    factoryLevel = selectedFactory.BuildingLevel;
+                    storageLevel = selectedStorage.BuildingLevel;
+
+                    if (result.PlanetResources < maxResource * storageLevel)
                     {
-                        result.PlanetResources += addedResource * incomingForm3FactoryLevel;
+                        result.PlanetResources += addedResource * factoryLevel;
                         _context.SaveChanges();
                         planetDataGridView.Refresh();
                     }

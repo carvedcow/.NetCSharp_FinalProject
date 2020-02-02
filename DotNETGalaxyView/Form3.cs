@@ -38,7 +38,6 @@ namespace DotNETGalaxyView
 
             tb_planetName.Text = planetName;
             tb_planetResources.Text = planetResource.ToString();
-
         }
 
         // upgrade button clicked
